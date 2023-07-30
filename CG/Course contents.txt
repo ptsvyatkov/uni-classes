@@ -1,0 +1,10 @@
+Entwicklungsgeschichte
+• Pixel: Computergrafik = Pixel anmalen?
+• 2D: Grundlagen, Geometrie, Algorithmen
+• 3D: Grundlagen erweitern, Projektion
+• Licht: Farben, Beleuchtungsmodelle
+• Textur: Anwendungsgebiete, Beispiele
+• Shader: Moderne Grafikprogrammierung
+• Welten: Riesige Datenmengen verwalten
+• Animation: Von gerade bis komplex
+• CSG, Strahlverfolgung: Idee, Vor-/Nachteile

@@ -1,0 +1,16 @@
+! Filter
+§ Lineare Filter / nichtlineare Filter
+§ Detektion von Kanten und Konturen
+
+! Geometrische Bildtransformationen
+§ Affine Transformationen/ Perspektive
+
+! Morphologische Filter
+
+! Grundlagen der Signalverarbeitung
+§ Pegel, SNR, ...
+
+! Grundlagen der Bildkompression
+§ DPCM, DCT(JPEG)
+
+! Digitales Video

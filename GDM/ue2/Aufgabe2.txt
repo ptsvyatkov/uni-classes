@@ -1,0 +1,41 @@
+Aufgabe 2
+Farbtransformation und Modifikation in Java mit ImageJ
+1) Verwenden Sie die Datei "Vorlage 2" und laden Sie das  Orchid-Bild für Ihre Übung herunter. Anschließend integrieren Sie diese wie gewohnt in Ihrer IDE und benennen Sie die Vorlage entsprechend ihrer Matrikelnummer um.
+
+2) Korrigieren Sie den Überlauf, der bei der Helligkeitsänderung auftritt.
+
+3) Als nächster Schritt soll eine Farbtransformation von RGB nach YUV programmiert werden.
+
+Die Transformationsvorschrift lautet:
+
+Luminanz	Y = 0.299 * R + 0.587 * G + 0.114 * B
+U Kanal	U = (B - Y) * 0.493
+V Kanal	V = (R - Y) * 0.877
+Die inverse Transformation lautet:
+
+Rot	R = Y + V/0.877
+Grün	G = 1/0.587 * Y - 0.299/0.587*R - 0.114/0.587 * B
+Blau	B = Y + U/0.493
+Rufen Sie die Farbtransformation in der Methode changePixelValues auf.
+Überprüfen Sie, ob das Ergebnis nach erfolgter Hin- und Rücktransformation wieder dem Original entspricht.
+
+4) Als nächstes soll eine Farbveränderung programmiert werden, die diverse Modifikationen des YUV-Vektors erlaubt.
+Hierbei sollen folgende Modifikationen möglich sein:
+
+Änderung der Helligkeit (-128 bis 128)
+
+Änderung des Kontrastes (0 bis 10.0)
+
+Interval: [0, 0.2, 0.4, 0.6, 0.8, 1, 2, 4, 6, 8, 10]
+
+Änderung der Farbsättigung (0 bis 5.0)
+
+Interval: [0, 0.25, 0.5, 0.75, 1, 2, 3, 4, 5]
+
+Änderung der Farbe (Hue) durch Drehung der Farb-Ebene bzw. des UV-Vektors um einen vorgebbaren Winkel (0 bis 360°)
+Zur Erinnerung:
+Eine Drehung eines Vektors (x,y) um den Winkel phi wird wie folgt berechnet:
+
+
+
+Alle Modifikationen sollen über die Veränderung der YUV-Vektoren aller Bildpunkte realisiert werden. Nach erfolgter Modifikation sollen die YUV-Vektoren wieder zurück nach RGB transformiert werden. Das veränderte Bild wird automatisch angezeigt.

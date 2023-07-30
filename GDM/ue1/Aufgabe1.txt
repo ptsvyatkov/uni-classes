@@ -1,0 +1,12 @@
+Laden Sie die Datei "Vorlage 1" herunter und ziehen Sie diese per Drag&Drop in den "src" Ordner des GDM Projekts in Ihrer IDE
+Benennen Sie diese Datei mit dem Refactoring-Tool in "GLDM_U1_S012345.java" (entsprechen ihrer Matrikelnummer) um
+Erstellen Sie ein Programm, dass folgende Aufgaben realisieren kann:
+      Erzeugung
+
+    a) eines schwarzen Bildes (schon fertig)
+    b) eines gelben Bildes
+    c) einer belgischen Fahne
+    d) einer Fahne der USA (ohne Sterne)
+    e) eines horizontaler Schwarz/Weiß Verlaufs
+    f) eines horizontalen Schwarz/Rot Verlaufs bei gleichzeitigem vertikalen Schwarz/Blau Verlauf
+    g) einer japanischen Fahne

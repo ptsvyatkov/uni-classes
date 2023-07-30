@@ -1,0 +1,22 @@
+Wie verändert sich der Informationsgehalt des Bildes (die Entropie),
+wenn Sie
+(a) die Helligkeit des Bildes ändern?
+-increasing or decreasing brightness makes the entropy go down
+Max brightness and min brightness -> entropy = 0
+
+(b) den Kontrast des Bildes ändern?
+-increasing or decreasing contrast makes the entropy go down
+min contrast -> entropy = 0 (gray image), at maximum contrast the entropy falls as well,
+but not to 0
+
+(c) den Gamma-Wert ausgehend von 1.0 verändern?
+-increasing or decreasing gamma makes the entropy go down, however not
+as much as brightness and contrast affect the entropy
+
+(d) den Autokontrast anwenden?
+If we apply auto-contrast, the entropy goes down. Since values are adding up on 0 and 255.
+
+
+For all methods, except auto-contrast, the entropy remains the same if there are no pixels shifting to 255 or 0.
+After that it entropy goes down. Due to the algortihmic structure of auto-contrast, some gray values are
+definetely shifting to 255 and 0, we can assume, that auto-contrast ALWAYS lowers entropy.

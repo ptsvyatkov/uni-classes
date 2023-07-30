@@ -1,0 +1,200 @@
+// BV Ue4 SS2020 Vorgabe
+//
+// Copyright (C) 2019 by Klaus Jung
+// All rights reserved.
+// Date: 2019-05-12
+
+package bv_ss20;
+
+import java.util.Arrays;
+
+
+import bv_ss20.ImageAnalysisAppController.StatsProperty;
+import javafx.collections.ObservableList;
+import javafx.geometry.Dimension2D;
+import javafx.geometry.Point2D;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
+
+public class Histogram {
+
+	private static final int grayLevels = 256;
+
+	private GraphicsContext gc;
+	private int maxHeight;
+	private int maxPixel;
+
+	private int[] histogram = new int[grayLevels];
+
+	int minimum;
+	int maximum;
+
+	public Histogram(GraphicsContext gc, int maxHeight) {
+		this.gc = gc;
+		this.maxHeight = maxHeight;
+	}
+
+	public int getMaximum() {
+		return maximum;
+	}
+
+	public int getMinimum() {
+		return minimum;
+	}
+
+
+	public void update(RasterImage image, Point2D ellipseCenter, Dimension2D ellipseSize, int selectionMax, ObservableList<StatsProperty> statsData) {
+
+		//histogram muss wieder null sein
+		Arrays.fill(histogram, 0);
+
+		int ellipseHeight = (int) ((ellipseSize.getHeight())/2);
+		int ellipseWidth =  (int) ((ellipseSize.getWidth())/2);
+		int centerX = (int) ellipseCenter.getX();
+		int centerY = (int) ellipseCenter.getY();
+
+		for(int y = 0; y < image.height; y++) {
+			for(int x = 0; x < image.width; x++) {
+
+				int xSqrt = (int) Math.sqrt(x - centerX);
+				int ySqrt = (int) Math.sqrt(y - centerY);
+				double insideEllipse = xSqrt/Math.sqrt(ellipseWidth) + ySqrt / Math.sqrt(ellipseHeight);
+
+				if(0 < ellipseWidth && 0 < ellipseHeight ) {
+					if (insideEllipse <= 1) {
+						int pos = y * image.width + x;
+						int pixel = image.argb[pos];
+						int gray   = ((pixel >> 16) & 0xff);
+						histogram[gray]++;
+					}
+				}
+
+			} 
+		}
+
+
+
+		double mean = 0;
+
+		//get all Pixels
+		double allPixel = 0;
+		for (int i=0; i < histogram.length; i++) {
+			allPixel += histogram[i];
+		}
+
+		int[] histogramCopy = histogram.clone();
+
+		for (StatsProperty property : statsData) {
+			switch(property) {
+
+			case Level: 
+				double selectionPixel = 0;
+				double level = 0;
+				if(selectionMax > -1) {
+					for (int i = 0; i < selectionMax; i++) {
+						selectionPixel += histogram[i];
+					}
+					level = selectionPixel/ allPixel;
+
+				}
+				property.setValueInPercent(level);
+				break;
+
+			case Minimum: 			  
+				for(int i = 0; i < histogram.length; i++) {
+					if(histogram[i] > 0) {
+						minimum = i;
+						break;
+					}
+				}
+
+				property.setValue(minimum);
+				break;
+
+			case Maximum: 
+				for (int i = 255; i >= 0; i--) {
+					if (histogram[i] > 0) {
+						maximum = i;
+						break;
+					}
+				}
+				property.setValue(maximum);
+				break;
+
+			case Mean: 
+				double allPixelValue = 0;
+				for (int i = 0; i < histogram.length; i++) {
+					allPixelValue += (double) (i * histogram[i]);
+				}
+				mean = allPixelValue/allPixel;
+				property.setValue(mean);
+				break;
+
+			case Median: 
+				double median;
+				Arrays.sort(histogramCopy);
+				if(histogram.length % 2 == 0) {
+					median = (histogramCopy[histogramCopy.length/2] + histogramCopy[histogramCopy.length/2 - 1])/2.0;
+				} else {
+					median = histogramCopy[histogramCopy.length/2];
+				}
+				property.setValue(median);
+				break;
+
+			case Variance: 
+				double variance = 0;
+				double temp = 0;
+				for (int i = 0; i < histogram.length; i++) {
+					temp += (i-mean) * (i - mean);
+				//	System.out.println("Temp: "+temp);
+				}
+				variance = temp / allPixel;
+				property.setValue(variance);
+				break;
+
+			case Entropy: 
+				double [] probabilities = new double [histogram.length];
+				double [] informations = new double [histogram.length];
+				double entropy = 0;
+				for (int i = 0; i < histogram.length; i++) {
+					probabilities[i] =  (double) histogram[i] / allPixel;
+					if(probabilities[i] != 0.0) {
+						informations [i] = - (Math.log(probabilities[i]) / Math.log(2.0));
+						entropy += probabilities[i] * informations[i];
+					}		
+				}
+				property.setValue(entropy);
+				break;
+
+			}
+		}
+	}
+	// Remark: Please ignore selectionMax and statsData in Exercise 4. It will be used in Exercise 5.
+
+
+	public void draw() {
+		gc.clearRect(0, 0, grayLevels, maxHeight);
+		gc.setLineWidth(1);	
+		double shift = 0.5;
+		double factor = 1.0;
+		gc.setStroke(Color.BLACK);
+		int max = 0;
+		for (int i = 0; i < histogram.length; i++) {
+			if(histogram[i]> max) {
+				max = histogram[i];
+			}
+		}
+		this.maxPixel = max;
+
+		factor = (double) maxHeight/ maxPixel;
+
+		for(int i = 0; i < histogram.length; i++) {
+
+			int histoValue = (int)(histogram[i] * factor);	
+
+			gc.strokeLine( i+shift, maxHeight + shift, i + shift, maxHeight - histoValue + shift);
+		}
+
+	}
+
+}

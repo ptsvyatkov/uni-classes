@@ -1,0 +1,10 @@
+Digitale Bilder
+Digitalisierung, Auflösung, Antialiasing
+Scannen und Drucken
+Sehen und Farbe, Farbsysteme
+Bildmanipulation, elementare Bildverarbeitung
+Bildpunktoperationen
+Filter, Retouche
+Geometrische Transformationen
+Bildmontagen, Effektfilter, Layertechniken
+Animationstechniken

@@ -1,0 +1,29 @@
+I. Elementare Videoüberlagerungen in Java mit ImageJ
+1) Laden Sie die Vorlage Übung 4 herunter und fügen Sie diese wie gewohnt Ihrem Projekt hinzu. Laden Sie weiterhin die Dateien StackB.zip und StackA.zip herunter. Starten Sie ihr Programm und öffnen Sie die Datei StackB.zip. Sie werden aufgefordert, einen zweiten Film zu öffnen, wählen Sie hier StackA.zip. Als nächstes ist eine Überlagerung auszuwählen, lassen Sie hierbei die Wahl auf "Wischen" stehen und wählen Sie ok.
+
+2)  Ziel dieser Übung ist es, die sechs vorgesehenen Überlagerungen zu realisieren.
+
+1. Wisch-Blende (ändern Sie die Richtung von horizontal in vertikal),
+
+2. Weiche Blende (d.h. sich ändernde Transparenz des überlagerten Filmes),
+
+
+
+Hierbei ist eine Überlagerung mit einer sich bildweise verändernden Transparenz zu realisieren.
+
+3. Die Überlagerung Ineinanderkopieren (Overlay)
+
+
+
+Overlay(A,B) bzw. Overlay(B,A)
+
+4. Schieb-Blende (lassen Sie den einen Film den anderen aus dem Bild schieben),
+
+5. Chroma-Keying (d. h. Freistellen des drehenden Objektes)
+
+Versuchen Sie hierbei den orangen Hintergrund möglichst gut transparent zu machen, ohne das "Raumschiff" zu verändern.
+
+
+
+6. Eine eigene Überblendung
+Dies kann z.B. eine geometrische Form wie z.B. ein sich öffnender Kreis sein. Bitte denken Sie sich möglichst eine eigene interessante Überlagerung aus.

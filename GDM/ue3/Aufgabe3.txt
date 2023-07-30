@@ -1,0 +1,18 @@
+Übung 3
+1.) Laden Sie die Datei "Vorlage 3" herunter und binden Sie diese wie gewohnt in Ihrer IDE ein. Anschließend benennen dieses wieder mit Ihrer Matrikelnummer.
+
+2) Realisieren Sie jetzt ein Programm, mit dem sie die folgenden Aufgaben realisieren können:
+
+a) Original des Bildes und Rot-Kanal (schon fertig)
+
+b) Negativ des Bildes
+
+c) Graustufenbild
+
+d) Binärbild (Schwarz / Weiß), realisieren Sie weiterhin die Möglichkeit das Bild mit fünf und zehn Graustufen darzustellen. Hierbei soll Schwarz und Weiß erhalten bleiben.
+
+e) Binärbild mit horizontaler Fehlerdiffusion. D.h. der Quantisierungsfehler soll beim unteren Pixel kompensiert werden.
+
+f) ein Bild mit Sepia-Färbung. Hierzu muss das Bild zunächst entsättigt werden (Graustufen). Als nächstes werden unterschiedliche Gradationskurven auf die R-, G- und B-Kanäle angewendet. (Schauen Sie hierzu, welche Gradationskurven in Photoshop einen schönen Sepia-Effekt erzeugen.)
+
+g) ein Bild mit nur sechs geeigneten Farben. Suchen Sie sich sechs sinnvolle Farben aus und weisen Sie diese den Pixeln so zu, dass das resultierende Bild möglichst gut aussieht.

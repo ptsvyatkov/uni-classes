@@ -1,0 +1,12 @@
+Übung 5
+Implementieren Sie ein PlugIn, mit dem sie die folgenden Aufgaben realisieren können:
+
+a) Original des Bildes (schon fertig)
+
+b) Weichgezeichnetes Bild 3x3 Mittelwertfilter
+
+c) Hochpassgefiltertes Bild
+
+d) Bild mit verstärkten Kanten
+
+Bearbeiten Sie zunächst alle Bildpunkte ohne die Randpixel. Wenn dies funktioniert, fügen Sie eine Randbehandlung hinzu, so dass alle Pixel gefiltert werden können.
